@@ -34,8 +34,12 @@ parser.add_argument('-se', '--seeds', help="number of seeds of input", default=1
 parser.add_argument('-rs', '--resize', help="resize", default=100, type=int)
 parser.add_argument('-rm', '--resize_mode', help="interpolation:nearest or bilinear", choices=["nearest", "bilinear"], default="bilinear", type=str)
 
-
 args = parser.parse_args()
+
+# check log dir exists
+if not os.path.exists("./log"):
+    os.mkdir("./log")
+
 if True:
     model, img_rows, img_cols, img_rgb = load_model(args.target_model)
     # dimsize = args.resize or img_rows
